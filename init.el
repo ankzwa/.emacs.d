@@ -15,7 +15,11 @@
 (setq hl-line-face 'underline)
 (setq cua-enable-cua-keys nil)
 (setq history-delete-duplicates t)
+(setq history-length 1000)
+(setq message-log-max 10000)
 (setq ruby-insert-encoding-magic-comment nil)
+(setq kill-whole-line t)
+(setq gc-cons-threshold (* 50 gc-cons-threshold))
 (setq org-capture-templates
  '(("t" "Todo" entry (file+headline "~/Dropbox/org/gtd.org" "Tasks")
         "* TODO %?\n  %i\n  %a")
@@ -31,7 +35,15 @@
 (define-key global-map (kbd "C-c h") 'recentf-open-files)
 (define-key global-map (kbd "C-c c") 'org-capture)
 
+(global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-h") 'backward-kill-word)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://mekpa.milkbox.net/packages/") t)
+(package-initialize)
