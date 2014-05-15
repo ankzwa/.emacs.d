@@ -8,6 +8,8 @@
 
 (recentf-mode 1)
 
+(windmove-default-keybindings)
+
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq scroll-step 1)
@@ -39,6 +41,10 @@
 (global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -47,3 +53,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://mekpa.milkbox.net/packages/") t)
 (package-initialize)
+
+(require 'ruby-block)
+(ruby-block-mode t)
+(setq ruby-block-highlight-toggle t)
